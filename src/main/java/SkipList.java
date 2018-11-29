@@ -88,6 +88,21 @@ class SkipList {
         }
     }
 
+    boolean check(int value) {
+        final int maxHeight = head.size();
+        Node node = head.get(maxHeight - 1);
+        while (node != null) {
+            if (node.left == null || value <= node.left.value) {
+                if (node.left != null && node.left.value == value) return true;
+                node = node.down;
+            } else {
+                node = node.left;
+            }
+        }
+        return false;
+    }
+
+
     int size() {
         return size;
     }

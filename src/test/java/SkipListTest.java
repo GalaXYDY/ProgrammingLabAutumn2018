@@ -15,5 +15,7 @@ public class SkipListTest {
 
         Assert.assertEquals(skipList.size(), result.length);
         Assert.assertArrayEquals(result, skipList.toArray());
+        Assert.assertTrue(skipList.check(23));
+        Assert.assertFalse(skipList.check(33));
     }
 }
