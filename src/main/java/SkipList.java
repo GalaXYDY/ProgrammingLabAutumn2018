@@ -41,7 +41,7 @@ class SkipList {
 
 
     SkipList() {
-        this(0.5, 10);
+        this(0.5, 16);
     }
 
     private int randomHeight() {
@@ -124,7 +124,7 @@ class SkipList {
                     head.remove(i);
                 }
             }
-            --size;
+            size--;
         }
     }
 

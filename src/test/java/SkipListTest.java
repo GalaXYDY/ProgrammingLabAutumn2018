@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class SkipListTest {
     @Test
     public void test() {
@@ -18,5 +20,7 @@ public class SkipListTest {
         Assert.assertArrayEquals(result, skipList.toArray());
         Assert.assertTrue(skipList.check(23));
         Assert.assertFalse(skipList.check(33));
+        skipList.add(33);
+        Assert.assertTrue(skipList.check(33));
     }
 }
