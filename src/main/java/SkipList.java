@@ -39,6 +39,7 @@ class SkipList {
         random = new Random();
     }
 
+
     SkipList() {
         this(0.5, 10);
     }
@@ -100,6 +101,31 @@ class SkipList {
             }
         }
         return false;
+    }
+
+    void remove(int value) {
+        final int maxHeight = head.size();
+        Node node = head.get(maxHeight - 1);
+        boolean available = false;
+        while (node != null) {
+            if (node.left == null || value <= node.left.value) {
+                if (node.left != null && node.left.value == value) {
+                    available = true;
+                    node.left = node.left.left;
+                }
+                node = node.down;
+            } else {
+                node = node.left;
+            }
+        }
+        if (available) {
+            for (int i = head.size() - 1; i >= 1; i--) {
+                if (head.get(i).left == null) {
+                    head.remove(i);
+                }
+            }
+            --size;
+        }
     }
 
 
