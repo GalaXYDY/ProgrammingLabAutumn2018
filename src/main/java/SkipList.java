@@ -117,6 +117,8 @@ class SkipList {
         final int maxHeight = head.size();
         Node node = head.get(maxHeight - 1);
         if (node != null) {
+            while (node.left.left != null)
+                node = node.left;
             while (node.down != null)
                 node = node.down;
             while (node.left.left != null)
