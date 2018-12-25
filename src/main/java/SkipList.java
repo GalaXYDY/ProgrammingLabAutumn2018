@@ -103,6 +103,28 @@ class SkipList {
         return false;
     }
 
+    int findMin() {
+        final int maxHeight = head.size();
+        Node node = head.get(maxHeight - 1);
+        if (node != null) {
+            while (node.down != null)
+                node = node.down;
+        }
+        return node.left.value;
+    }
+
+    int findMax() {
+        final int maxHeight = head.size();
+        Node node = head.get(maxHeight - 1);
+        if (node != null) {
+            while (node.down != null)
+                node = node.down;
+            while (node.left.left != null)
+                node = node.left;
+        }
+        return node.left.value;
+    }
+
     void remove(int value) {
         final int maxHeight = head.size();
         Node node = head.get(maxHeight - 1);

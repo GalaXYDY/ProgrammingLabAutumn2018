@@ -16,11 +16,19 @@ public class SkipListTest {
         skipList.remove(7);
         skipList.print();
 
+
         Assert.assertEquals(skipList.size(), result.length);
         Assert.assertArrayEquals(result, skipList.toArray());
         Assert.assertTrue(skipList.check(23));
         Assert.assertFalse(skipList.check(33));
         skipList.add(33);
         Assert.assertTrue(skipList.check(33));
+
+        skipList.add(344);
+        Assert.assertEquals(skipList.findMax(), 344);
+
+        skipList.remove(3);
+        skipList.remove(8);
+        Assert.assertEquals(skipList.findMin(), 12);
     }
 }
